@@ -28,7 +28,7 @@ spec:
             name: minecraft-server-data
           - mountPath: /crafty_db
             name: minecraft-crafty-db
-          - mountPath: /backups
+          - mountPath: /crafty-web/backups/
             name: minecraft-crafty-backups
       volumes:
       - name: minecraft-server-data
