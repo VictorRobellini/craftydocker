@@ -3,11 +3,11 @@ docker-compose.yaml
 
 The Docker Compose to run either of the 2 containers build using this repo
 
-docker-static
+docker-static - 
 This creates an image that pulls in the latest crafty source and builds it.
 
-docker-uptodate
+docker-uptodate - 
 This creates an image that pulls in the latest crafty source and builds it every time the image is launched.
 
-kubernetes
+kubernetes - 
 My k8s yaml
