@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  labels:
+    app: minecraft-crafty
+  name: minecraft-crafty
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minecraft-crafty
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: minecraft-crafty
+    spec:
+      containers:
+        - name: minecraft-crafty
+          image: crafty-web:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 25565
+          volumeMounts:
+          - mountPath: /minecraft_servers
+            name: minecraft-server-data
+          - mountPath: /crafty_db
+            name: minecraft-crafty-db
+          - mountPath: /backups
+            name: minecraft-crafty-backups
+      volumes:
+      - name: minecraft-server-data
+        hostPath:
+          path: /data/crafty/minecraft-server/
+          type: Directory
+      - name: minecraft-crafty-db
+        hostPath:
+          path: /data/crafty/crafty_db
+          type: Directory
+      - name: minecraft-crafty-backups
+        hostPath:
+          path: /data/crafty/backups
+          type: Directory
+status: {}
