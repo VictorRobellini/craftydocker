@@ -1,1 +1,1 @@
-docker build -t crafty-web-update .
+docker build -t crafty-web-uptodate .
