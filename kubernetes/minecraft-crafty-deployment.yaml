@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: minecraft-crafty
-          image: crafty-web:latest
+          image: crafty-web-uptodate:latest
           imagePullPolicy: Never
           ports:
             - containerPort: 25565

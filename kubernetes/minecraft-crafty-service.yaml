@@ -10,9 +10,15 @@ spec:
   type: LoadBalancer
   loadBalancerIP: 10.0.14.6
   ports:
-  - name: "minecraft-crafty"
+  - name: "testbed"
     port: 25565
     targetPort: 25565
+  - name: "newhome"
+    port: 25564
+    targetPort: 25564
+  - name: "newhome-dynmap"
+    port: 8123
+    targetPort: 8123
   - name: "crafty"
     port: 8000
     targetPort: 8000
