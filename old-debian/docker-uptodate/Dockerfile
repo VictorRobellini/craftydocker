@@ -1,10 +1,8 @@
-FROM ubuntu:20.04
-
-ARG DEBIAN_FRONTEND=noninteractive
+FROM debian:buster-slim
 
 RUN mkdir -p /usr/share/man/man1 && \
     apt-get update && \
-    apt-get install -y wget default-jre-headless python3 python3-pip libmariadb-dev openjdk-16-jre-headless && \
+    apt-get install -y wget default-jre-headless python3 python3-pip libmariadb-dev && \
     apt-get autoremove -y &&  \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*

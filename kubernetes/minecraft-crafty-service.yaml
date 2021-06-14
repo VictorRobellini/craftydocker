@@ -3,6 +3,7 @@ kind: Service
 metadata:
   namespace: default
   annotations:
+    metallb.universe.tf/allow-shared-ip: "geysermc"
   labels:
     app: minecraft-crafty
   name: minecraft-crafty
@@ -16,12 +17,34 @@ spec:
   - name: "newhome"
     port: 25564
     targetPort: 25564
-  - name: "newhome-dynmap"
-    port: 8123
-    targetPort: 8123
+  - name: "cavencliffs"
+    port: 25563
+    targetPort: 25563
   - name: "crafty"
     port: 8000
     targetPort: 8000
+  selector:
+    app: minecraft-crafty
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: default
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "geysermc"
+  labels:
+    app: minecraft-crafty
+  name: minecraft-crafty-udp
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.0.14.6
+  ports:
+  - name: "newhome"
+    port: 25564
+    targetPort: 25564
+    protocol: UDP
   selector:
     app: minecraft-crafty
 status:
